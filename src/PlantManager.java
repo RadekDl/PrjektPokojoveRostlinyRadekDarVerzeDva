@@ -40,7 +40,7 @@ public class PlantManager {
             plantList.sort(Comparator.comparing(Plant::getName));
             // Výpis rostlin na obrazovku
             for (Plant plant : plantList) {
-                System.out.println(plant);
+                System.out.println(plant.getName());
             }
             System.out.println("\n");
         }
@@ -48,7 +48,10 @@ public class PlantManager {
     public void sortingWatering(){
             plantList.sort(Comparator.comparing(Plant::getWatering));
             //výpis seřazených rostlin na obrazovku
-            plantList.forEach(System.out::println);
+        for (Plant plant : plantList) {
+            System.out.println(plant.getWatering()+" "+plant.getName());
+        }
+        System.out.println("\n");
         }
     }
 
