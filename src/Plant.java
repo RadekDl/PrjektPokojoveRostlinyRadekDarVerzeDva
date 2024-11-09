@@ -40,7 +40,7 @@ public class Plant {
         this.notes = notes;
     }
 
-    public int getFrequencyOfWatering() throws PlantExeption {
+    public int getFrequencyOfWatering()  {
 
         return frequencyOfWatering;
     }
@@ -58,7 +58,11 @@ public class Plant {
         return watering;
     }
 
-    public void setWatering(LocalDate watering) {
+    public void setWatering(LocalDate watering) throws PlantExeption {
+        if(watering.isBefore(getPlanted())){
+            throw  new PlantExeption("datum zálivky nemůže být starší jak datum zasazení! datum zálivky zadáno: "+getWatering()
+            +" a datum zasazení je: "+getPlanted());
+        }
         this.watering = watering;
     }
 
@@ -76,7 +80,7 @@ public class Plant {
         return listing;
     }
     //přepsání poslední zálivky na dneštní den
-    public void doWatering(){
+    public void doWatering() throws PlantExeption {
         setWatering(LocalDate.now());
     }
 

@@ -10,7 +10,7 @@ public class Main {
             System.out.println(plantKaktus.getWetingInfo());
             System.out.println(plantRose.getWetingInfo());
             plantRose.setWatering(LocalDate.now());
-            System.out.println(plantRose.getWetingInfo());
+            System.out.println("výpis po přepsání zálivky na dnešní datum \n"+plantRose.getWetingInfo());
             plantRose.setFrequencyOfWatering(10);
             System.out.println(plantRose.getFrequencyOfWatering());
         } catch (PlantExeption e) {
