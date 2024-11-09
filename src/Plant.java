@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class Plant {
+public class Plant implements Comparable <Plant> {
     private String name;
     private String notes;
     private int frequencyOfWatering;//frekvence zalívání
@@ -85,4 +85,8 @@ public class Plant {
     }
 
 
+    @Override
+    public int compareTo(Plant o) {
+        return 0;
+    }
 }
