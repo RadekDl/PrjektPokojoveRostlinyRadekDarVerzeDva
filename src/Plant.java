@@ -61,7 +61,7 @@ public class Plant {
     public void setWatering(LocalDate watering) throws PlantExeption {
         if(watering.isBefore(getPlanted())){
             throw  new PlantExeption("datum zálivky nemůže být starší jak datum zasazení! datum zálivky zadáno: "+getWatering()
-            +" a datum zasazení je: "+getPlanted());
+            +" a datum zasazení je: "+getPlanted()+" u rostliny: "+getName());
         }
         this.watering = watering;
     }
@@ -76,7 +76,7 @@ public class Plant {
 
     //informace - jméno květiny, datum poslední zálivky, doporučená další zálivka
     public String getWetingInfo(){
-        String listing = "jmeno "+getName()+ " poslední zálivka "+getWatering()+ " doporučená další zálivka je: "+getWatering().plusDays(7);
+        String listing = "jmeno "+getName()+ " poslední zálivka "+getWatering()+ " doporučená další zálivka je: "+getWatering().plusDays(getFrequencyOfWatering());
         return listing;
     }
     //přepsání poslední zálivky na dneštní den
