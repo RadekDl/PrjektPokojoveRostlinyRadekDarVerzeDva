@@ -1,40 +1,43 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 public class PlantManager {
     private List <Plant> plantList  = new ArrayList<>();
 
-    //metody
 
     public List<Plant> getPlantList() {
         return plantList;
     }
-    //přidání nové květiny do seznamu přes manažera
+        //přidání nové květiny do seznamu přes manažera
     public void addPlant(Plant plant){
     plantList.add(plant);
     }
-    //získání květiny ze senamu dle indexu přes manažera
+        //získání květiny ze senamu dle indexu přes manažera
     public Plant getPlantIndex(int index){
     return plantList.get(index);
     }
-    //smazání květiny ze seznamu přes manažera
+        //smazání květiny ze seznamu přes manažera
     public void plantListRemoveIndex(int index){
         plantList.remove(index);
     }
-    //vytvoření kopie seznamu přes manažera
+        //vytvoření kopie seznamu přes manažera
     public List <Plant> copyOfPlantList(){
     List <Plant> copyOfPlantList = new ArrayList<>(plantList);
     return copyOfPlantList;
     }
-    // metoda na výpis rostlin k zalití přes manažera
+        // metoda na výpis rostlin k zalití přes manažera
     public void plantsForWatering(){
         for (int i = 0; i < plantList.size(); i++) {
             if(plantList.get(i).getWatering().isBefore(plantList.get(i).getWatering().plusDays(plantList.get(i).getFrequencyOfWatering())));
             System.out.println("rostlinu "+plantList.get(i).getName()+" je potřeba zalít!");
         }
     }
-    //seřazení rostlin podle jména
+        //seřazení rostlin podle jména
     public void sortingName(){
             // Seřazení plantList
             plantList.sort(Comparator.comparing(Plant::getName));
@@ -44,7 +47,7 @@ public class PlantManager {
             }
             System.out.println("\n");
         }
-    //seřazení rostlin podle poslední zálivky
+        //seřazení rostlin podle poslední zálivky
     public void sortingWatering(){
             plantList.sort(Comparator.comparing(Plant::getWatering));
             //výpis seřazených rostlin na obrazovku
@@ -53,6 +56,21 @@ public class PlantManager {
         }
         System.out.println("\n");
         }
+        //načtení ze souboru
+    public void loadingAndSaving(String nameFile){
+        try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(nameFile)))) {
+            int lineNumber = 0;
+            while (scanner.hasNextLine()) {
+                String line = scanner.nexLine();
+                lineNumber++;
+                System.out.println(Plant.parse(line, lineNumber));
+
+            }
+        }catch (FileNotFoundException e) {
+            throw new PlantException("Soubor "+nameFile+" nebyl nalezen! \n"+ e.getLocalizedMessage());
+
+        }
+    }
     }
 
 
