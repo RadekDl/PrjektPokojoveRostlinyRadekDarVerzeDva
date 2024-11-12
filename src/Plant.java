@@ -9,6 +9,11 @@ public class Plant implements Comparable <Plant> {
 
     //konstruktor 1
     public Plant(String name, String notes, int frequencyOfWatering, LocalDate watering, LocalDate planted) throws PlantExeption {
+        int line = 1;
+        if(watering.isBefore(planted)){
+            line++;
+            throw  new PlantExeption("datum zálivky nemůže být starší jak datum zasazení! chybné datum je na řádku "+line);
+        }
         this.name = name;
         this.notes = notes;
         this.setFrequencyOfWatering(frequencyOfWatering);
@@ -59,10 +64,12 @@ public class Plant implements Comparable <Plant> {
     }
 
     public void setWatering(LocalDate watering) throws PlantExeption {
-        if(watering.isBefore(getPlanted())){
-            throw  new PlantExeption("datum zálivky nemůže být starší jak datum zasazení! datum zálivky zadáno: "+getWatering()
-            +" a datum zasazení je: "+getPlanted()+" u rostliny: "+getName());
+        int line = 0;
+        if(watering.isBefore(planted)){
+            line++;
+            throw  new PlantExeption("datum zálivky nemůže být starší jak datum zasazení! řádek\n" + line);
         }
+
         this.watering = watering;
     }
 

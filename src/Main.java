@@ -19,7 +19,7 @@ public class Main {
 
             plantManager.addPlant(new Plant("kaktus"," bez poznámky ",7,LocalDate.of(2024, 10,1),
                     LocalDate.of(2024,9,10)));
-            plantManager.addPlant(new Plant("rose"," cervena ",10,LocalDate.of(2024,11,8),
+            plantManager.addPlant(new Plant("rose1"," cervena ",10,LocalDate.of(2024,11,8),
                     LocalDate.of(2024,11,1)));
             plantManager.addPlant(new Plant("bledule"));
             System.out.println("\n");
@@ -28,7 +28,7 @@ public class Main {
             plantManager.sortingWatering();
         } catch (PlantExeption e) {
             System.err.println(e.getMessage());
-            e.printStackTrace();
+           // e.printStackTrace();
         }
 
     }
