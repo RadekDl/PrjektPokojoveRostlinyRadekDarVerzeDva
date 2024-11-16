@@ -30,7 +30,9 @@ public class Main {
             plantManager.sortingName();
             plantManager.sortingWatering();
             plantManager.loadingAndSaving("Resources/kvetiny.txt");
-            plantManager.loadingAndSaving("Resources/kvetiny-spatne-datum.txt");
+            plantManager.getPlantList().sort(Plant::compareTo);
+            System.out.println(plantManager.getPlantList().size());
+            plantManager.listing();
         } catch (PlantExeption e) {
             System.err.println(e.getMessage());
             e.printStackTrace();

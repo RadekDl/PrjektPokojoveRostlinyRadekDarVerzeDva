@@ -57,23 +57,46 @@ public class PlantManager {
         System.out.println("\n");
         }
         //načtení ze souboru
-    public void loadingAndSaving(String nameFile) throws PlantExeption {
+    public void loadingAndSaving
+    (String nameFile) throws PlantExeption {
         try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(nameFile)))) {
             int lineNumber = 0;
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 lineNumber++;
-                System.out.println(Plant.parse(line,lineNumber)); //zavolán výtisk s statickou metodou Plant parse
+                System.out.println(Plant.parse(line, lineNumber)); //zavolán výtisk s statickou metodou Plant parse
+                plantList.add(Plant.parse(line, lineNumber));
             }
-        }catch (FileNotFoundException e) {
-            throw new PlantExeption("Soubor "+nameFile+" nebyl nalezen! \n"+ e.getLocalizedMessage());
+        } catch (FileNotFoundException e) {
+            throw new PlantExeption("Soubor " + nameFile + " nebyl nalezen! \n" + e.getLocalizedMessage());
 
-       }
+        }
+    }
 
-   }
 
+    public void loadingAndListing (String nameFile) throws PlantExeption {
+        try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(nameFile)))) {
+            int lineNumber = 0;
+            while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    lineNumber++;
+                    System.out.println(Plant.parse(line, lineNumber)); //zavolán výtisk s statickou metodou Plant parse
 
-}
+                }
+            } catch (FileNotFoundException e) {
+                throw new PlantExeption("Soubor " + nameFile + " nebyl nalezen! \n" + e.getLocalizedMessage());
+
+            }
+
+        }
+
+        public void listing(){
+            for (int i = 0; i < getPlantList().size(); i++) {
+                System.out.println(plantList.get(i).getName());
+            }
+        }
+    }
+
 
 
 
