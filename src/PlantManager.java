@@ -57,21 +57,24 @@ public class PlantManager {
         System.out.println("\n");
         }
         //načtení ze souboru
-    public void loadingAndSaving(String nameFile){
+    public void loadingAndSaving(String nameFile) throws PlantExeption {
         try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(nameFile)))) {
             int lineNumber = 0;
             while (scanner.hasNextLine()) {
-                String line = scanner.nexLine();
+                String line = scanner.nextLine();
                 lineNumber++;
-                System.out.println(Plant.parse(line, lineNumber));
-
+                System.out.println(Plant.parse(line,lineNumber)); //zavolán výtisk s statickou metodou Plant parse
             }
         }catch (FileNotFoundException e) {
-            throw new PlantException("Soubor "+nameFile+" nebyl nalezen! \n"+ e.getLocalizedMessage());
+            throw new PlantExeption("Soubor "+nameFile+" nebyl nalezen! \n"+ e.getLocalizedMessage());
 
-        }
-    }
-    }
+       }
+
+   }
+
+
+}
+
 
 
 

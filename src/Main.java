@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) throws PlantExeption {
         try {
             Plant plantKaktus = new Plant("kaktus");
-            Plant plantRose = new Plant("rose", " červená ", 7, LocalDate.of(2024, 11, 1),
+            Plant plantRose = new Plant("rose", " červená ", 7, LocalDate.of(2024, 11, 6),
                     LocalDate.of(2024, 11, 1));
 
             System.out.println(plantKaktus.getWetingInfo());
@@ -17,18 +17,23 @@ public class Main {
 
             PlantManager plantManager = new PlantManager();
 
-            plantManager.addPlant(new Plant("kaktus"," bez poznámky ",7,LocalDate.of(2024, 10,1),
+            plantManager.addPlant(new Plant("kaktus"," bez poznámky ",7,LocalDate.of(2024, 11,6),
                     LocalDate.of(2024,9,10)));
             plantManager.addPlant(new Plant("rose1"," cervena ",10,LocalDate.of(2024,11,8),
                     LocalDate.of(2024,11,1)));
             plantManager.addPlant(new Plant("bledule"));
+            plantManager.addPlant(new Plant("mrkev"," červená ",7,LocalDate.of(2024,11,6),
+                    LocalDate.of(2024,11,1)));
             System.out.println("\n");
+
 
             plantManager.sortingName();
             plantManager.sortingWatering();
+            plantManager.loadingAndSaving("Resources/kvetiny.txt");
+            plantManager.loadingAndSaving("Resources/kvetiny-spatne-datum.txt");
         } catch (PlantExeption e) {
             System.err.println(e.getMessage());
-           // e.printStackTrace();
+            e.printStackTrace();
         }
 
     }
