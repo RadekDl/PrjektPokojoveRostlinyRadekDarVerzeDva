@@ -102,7 +102,6 @@ public class Plant implements Comparable <Plant> {
         String name = parts[0].trim(); // trim odstraní mezery za a před segmentem
         String notes = parts[1].trim();
         try {
-
             int frequencyOfWatering = Integer.parseInt(parts[2].trim());
             LocalDate watering = LocalDate.parse(parts[3].trim());
             LocalDate planted = LocalDate.parse(parts[4].trim());
