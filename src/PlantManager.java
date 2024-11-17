@@ -57,8 +57,7 @@ public class PlantManager {
         System.out.println("\n");
         }
         //načtení ze souboru
-    public void loadingAndSaving
-    (String nameFile) throws PlantExeption {
+    public void loadingAndSaving(String nameFile) throws PlantExeption {
         try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(nameFile)))) {
             int lineNumber = 0;
             while (scanner.hasNextLine()) {
@@ -89,13 +88,20 @@ public class PlantManager {
             }
 
         }
-
-        public void listing(){
+    public void listing(){
+        System.out.println("výpis všech rostlin v listu ");
             for (int i = 0; i < getPlantList().size(); i++) {
-                System.out.println(plantList.get(i).getName());
+                System.out.println(plantList.get(i).getName()+" zasazení "+plantList.get(i).getPlanted()+" zalití "+
+                        plantList.get(i).getWatering());
             }
         }
+    public  void writingToFile(){
+
+
     }
+
+    }
+
 
 
 

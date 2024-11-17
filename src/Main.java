@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) throws PlantExeption {
@@ -17,12 +18,12 @@ public class Main {
 
             PlantManager plantManager = new PlantManager();
 
-            plantManager.addPlant(new Plant("kaktus"," bez poznámky ",7,LocalDate.of(2024, 11,6),
+            plantManager.addPlant(new Plant("Kaktus"," bez poznámky ",7,LocalDate.of(2024, 11,6),
                     LocalDate.of(2024,9,10)));
-            plantManager.addPlant(new Plant("rose1"," cervena ",10,LocalDate.of(2024,11,8),
+            plantManager.addPlant(new Plant("Rose1"," cervena ",10,LocalDate.of(2024,11,8),
                     LocalDate.of(2024,11,1)));
-            plantManager.addPlant(new Plant("bledule"));
-            plantManager.addPlant(new Plant("mrkev"," červená ",7,LocalDate.of(2024,11,6),
+            plantManager.addPlant(new Plant("Bledule"));
+            plantManager.addPlant(new Plant("Mrkev"," červená ",7,LocalDate.of(2024,11,6),
                     LocalDate.of(2024,11,1)));
             System.out.println("\n");
 
@@ -31,7 +32,10 @@ public class Main {
             plantManager.sortingWatering();
             plantManager.loadingAndSaving("Resources/kvetiny.txt");
             plantManager.getPlantList().sort(Plant::compareTo);
+
             System.out.println(plantManager.getPlantList().size());
+            System.out.println("výpis dle zasazení");
+            plantManager.getPlantList().sort(Comparator.comparing(Plant::getPlanted));
             plantManager.listing();
         } catch (PlantExeption e) {
             System.err.println(e.getMessage());
