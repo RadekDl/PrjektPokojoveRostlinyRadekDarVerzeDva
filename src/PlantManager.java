@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -63,7 +61,7 @@ public class PlantManager {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 lineNumber++;
-                System.out.println(Plant.parse(line, lineNumber)); //zavolán výtisk s statickou metodou Plant parse
+//                System.out.println(Plant.parse(line, lineNumber)); //zavolán výtisk s statickou metodou Plant parse
                 plantList.add(Plant.parse(line, lineNumber));
             }
         } catch (FileNotFoundException e) {
@@ -89,16 +87,26 @@ public class PlantManager {
 
         }
     public void listing(){
-        System.out.println("výpis všech rostlin v listu ");
+        System.out.println("výpis všech rostlin v listu\n ");
             for (int i = 0; i < getPlantList().size(); i++) {
                 System.out.println(plantList.get(i).getName()+" zasazení "+plantList.get(i).getPlanted()+" zalití "+
                         plantList.get(i).getWatering());
             }
         }
-    public  void writingToFile(){
+    public void writingToFile (String nameFile) throws PlantExeption {
+        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(nameFile)))) {
+           ;
+            for (Plant plant : plantList) {
+                writer.println(plant.toFileString(Seting.getSeparator()));
 
+            }
+        } catch (IOException e) {
+            throw new PlantExeption("Soubor " + nameFile + " nebyl nalezen! \n" + e.getLocalizedMessage());
+
+        }
 
     }
+
 
     }
 

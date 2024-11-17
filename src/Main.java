@@ -37,6 +37,25 @@ public class Main {
             System.out.println("výpis dle zasazení");
             plantManager.getPlantList().sort(Comparator.comparing(Plant::getPlanted));
             plantManager.listing();
+            plantManager.writingToFile("Resources/nacteny-soubor.txt");
+            System.out.println("vypsání načteného souboru");
+            plantManager.loadingAndListing("Resources/nacteny-soubor.txt");
+
+
+
+            for (int i = 0; i < 10; i++) {
+
+                plantManager.getPlantList().add(new Plant("Tulipan"+Seting.flowerNumber()));
+
+            }
+            plantManager.getPlantList().sort(Comparator.comparing(Plant::getName));
+            System.out.println("\nvýpis po přidání tulipánů\n");
+            plantManager.listing();
+            plantManager.plantListRemoveIndex(2);
+            System.out.println("\nvýpis po prodeji třetí rostliny\n");
+            plantManager.listing();
+
+
         } catch (PlantExeption e) {
             System.err.println(e.getMessage());
             e.printStackTrace();

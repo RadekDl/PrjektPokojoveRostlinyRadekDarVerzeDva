@@ -111,6 +111,9 @@ public class Plant implements Comparable <Plant> {
             throw new PlantExeption("nesprávný formát položky na řádku" + e.getMessage());
         }
     }
+    public String toFileString( String separator){  //vrátí seznam na řádek i s oddělovači(separátor)
+        return name + separator+ notes+separator + frequencyOfWatering+separator + watering+separator + planted;
+    }
 
     @Override
     public String toString() {

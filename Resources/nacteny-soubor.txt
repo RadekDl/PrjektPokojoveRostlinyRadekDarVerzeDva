@@ -1,0 +1,7 @@
+Sukulent v koupelně	Nezalévá se	365	2011-03-01	2011-03-01
+Fialka 1	Popis fialky - je fialová a hezká	3	2021-05-12	2021-01-01
+Vánoční hvězda bez poznámky		4	2021-05-10	2021-04-01
+Kaktus	 bez poznámky 	7	2024-11-06	2024-09-10
+Mrkev	 červená 	7	2024-11-06	2024-11-01
+Rose1	 cervena 	10	2024-11-08	2024-11-01
+Bledule	 	7	2024-11-17	2024-11-17
