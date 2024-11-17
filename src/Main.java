@@ -59,7 +59,6 @@ public class Main {
         } catch (PlantExeption e) {
             System.err.println(e.getMessage());
             e.printStackTrace();
-
         }
 
     }
